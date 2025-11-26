@@ -12,7 +12,7 @@ export function Consult() {
 
     return (
         <div>
-            <h1 className='text-3xl text-gray-800 mb-4'>Listar cadastros</h1>
+            <h1 className='text-3xl text-gray-800 mb-4'>Listar tarefas</h1>
             <form className='space-y-2'>
                 <div className="flex flex-row gap-4">
                     <div>

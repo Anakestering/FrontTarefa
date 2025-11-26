@@ -19,7 +19,7 @@ export function ListaUsuarios({ sinal, atualizaData }) {
                     const data = await response.json();
                     setUsuarios(data);
                 } else {
-                    setError("Erro ao buscar usuários");
+                    setError("Erro ao buscar tarefa");
                 }
             } catch (error) {
                 setError("Erro na conexão com o backend. Está rodando?");
@@ -33,18 +33,18 @@ export function ListaUsuarios({ sinal, atualizaData }) {
 
     
     const deletarUsuario = async (id) =>{
-        if(!window.confirm('Tem certeza que deseja excluir esse usuário?')){
+        if(!window.confirm('Tem certeza que deseja excluir essa tarefa?')){
             return;
         }
 
         try{
-            const response = await fetch (`http://localhost:8080/api/deletarTarefa/${id}`, {
+            const response = await fetch (`http://localhost:8080/api/deletarUsuario/${id}`, {
                 method: 'DELETE',
             })
             if(response.ok){
                 atualizaData();
             }else{
-                alert("Erro ao excluir usuário. Tente novamente mais tarde!")
+                alert("Erro ao excluir tarefa. Tente novamente mais tarde!")
             }
 
 
@@ -55,7 +55,7 @@ export function ListaUsuarios({ sinal, atualizaData }) {
     }
 
     if (isLoading) {
-        return <p className='text-center text-gray-500'>Carregando usuários...</p>;
+        return <p className='text-center text-gray-500'>Carregando tarefas...</p>;
     }
 
     if (error) {
@@ -63,21 +63,21 @@ export function ListaUsuarios({ sinal, atualizaData }) {
     }
 
     if (usuarios.length === 0) {
-        return <p className='text-center text-gray-500'>Nenhum usuário cadastrado ainda.</p>;
+        return <p className='text-center text-gray-500'>Nenhuma tarefa cadastrada ainda.</p>;
     }
 
     return (
         <div className='mt-8'>
-            <h2 className='text-2xl text-gray-800 mb-4'>Usuários cadastrados</h2>
+            <h2 className='text-2xl text-gray-800 mb-4'>Tarefas cadastradas</h2>
             <ul className='space-y-3'>
                 {usuarios.map(usuario => (
 
                     <li key={usuario.id} className='flex justify-between items-center p-4 bg-white rounded-lg shadow border border-gray-200'>
                         <div>
-                            <p className='font-bold text-lg text-sky-700'>{usuario.nome}</p>
-                            <p className='text-sm text-gray-600'>{usuario.email}</p>
-                            <p className='text-sm text-gray-600'>{usuario.telefone}</p>
-                            <p className='text-sm text-gray-600'>{usuario.dataNascimento}</p>
+                            <p className='font-bold text-lg text-sky-700'>{usuario.titulo}</p>
+                            <p className='text-sm text-gray-600'>{usuario.descricao}</p>
+                            <p className='text-sm text-gray-600'>{usuario.dataVencimento}</p>
+                            <p className='text-sm text-gray-600'>{usuario.prioridade}</p>
                         </div>
                         <button
                         onClick={() => setUsuarioEmEdicao(usuario)}

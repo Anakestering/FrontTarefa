@@ -3,9 +3,10 @@ import { useState, useEffect } from 'react'
 export function EdicaoUsuario({ usuario, onClose, onSaveSuccess }) {
 
     const [formData, setFormData] = useState({
-        nome: '',
-        email: '',
-        telefone: ''
+        titulo: '',
+        descricao: '',
+        dataVencimento: '',
+        prioridade: ''
     })
 
     const [isLoading, setIsLoading] = useState(false)
@@ -13,9 +14,10 @@ export function EdicaoUsuario({ usuario, onClose, onSaveSuccess }) {
     useEffect(() => {
         if (usuario) {
             setFormData({
-                nome: usuario.nome,
-                email: usuario.email,
-                telefone: usuario.telefone
+                titulo: usuario.titulo,
+                descricao: usuario.descricao,
+                dataVencimento: usuario.dataVencimento,
+                prioridade: usuario.prioridade
             })
         }
     }, [usuario])
@@ -44,7 +46,7 @@ export function EdicaoUsuario({ usuario, onClose, onSaveSuccess }) {
                 })
 
             if (response.ok) {
-                alert('Usuário atualizado com sucesso!')
+                alert('Tarefa atualizada com sucesso!')
                 onSaveSuccess();
                 onClose();
             } else {
@@ -68,41 +70,60 @@ export function EdicaoUsuario({ usuario, onClose, onSaveSuccess }) {
                 <h2 className='text-2xl font-bold mb-4'>Editar usuário</h2>
                 <form onSubmit={handleSubmit} className='space-y-4'>
                     <div>
-                        <label htmlFor='nome' className='block text-sm font-medium text-gray-700'></label>
+                        <label htmlFor='titulo' className='block text-sm font-medium text-gray-700'></label>
                         <input
                             type='text'
-                            name='nome'
-                            id='nome'
-                            value={formData.nome}
+                            name='titulo'
+                            id='titulo'
+                            value={formData.titulo}
                             onChange={handleChange}
                             className='w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent'
                             required
                         />
                     </div>
+
+
                     <div>
-                        <label htmlFor='email' className='block text-sm font-medium text-gray-700'></label>
-                        <input
-                            type='email'
-                            name='email'
-                            id='email'
-                            value={formData.email}
+                        <label htmlFor='descricao' className='block text-sm font-medium text-gray-700'></label>
+                        <textarea
+                            type='text'
+                            name='descricao'
+                            id='descricao'
+                            value={formData.descricao}
                             onChange={handleChange}
                             className='w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent'
                             required
                         />
                     </div>
+
+
                     <div>
-                        <label htmlFor='telefone' className='block text-sm font-medium text-gray-700'></label>
+                        <label htmlFor='dataVencimento' className='block text-sm font-medium text-gray-700'></label>
                         <input
-                            type='tel'
-                            name='telefone'
-                            id='telefone'
-                            value={formData.telefone}
+                            type='text'
+                            name='dataVencimento'
+                            id='dataVencimento'
+                            value={formData.dataVencimento}
                             onChange={handleChange}
                             className='w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent'
                             required
                         />
                     </div>
+
+                    <div>
+                        <label htmlFor='prioridade' className='block text-sm font-medium text-gray-700'></label>
+                        <input
+                            type='text'
+                            name='prioridade'
+                            id='prioridade'
+                            value={formData.prioridade}
+                            onChange={handleChange}
+                            className='w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent'
+                            required
+                        />
+                    </div>
+
+
                     <div className='flex justify-end gap-4 mt-6'>
                         <button
                             className='px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover: bg-gray-400'
