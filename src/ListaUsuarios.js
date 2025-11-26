@@ -83,8 +83,9 @@ export function ListaUsuarios({ sinal, atualizaData }) {
     }
 
     return (
-        <div className='mt-8 p-4 bg-white rounded-xl shadow-lg'>
-            <h2 className='text-3xl font-bold text-gray-800 mb-6 border-b pb-3'>Lista de tarefas</h2>
+
+        <div className='mt-3'>
+
             <ul className='space-y-3'>
                 {usuarios.map(usuario => (
 
@@ -114,7 +115,7 @@ export function ListaUsuarios({ sinal, atualizaData }) {
                                 </span>
                             </p>
 
-                            <p className='mt-3 text-sm text-gray-800 font-semibold'>Vence dia: {new Date(usuario.dataVencimento).toLocaleString("pt-BR", {
+                            <p className='text-sm text-gray-600 mt-2'>Vence dia: {new Date(usuario.dataVencimento).toLocaleString("pt-BR", {
                                 dateStyle: "short",
                                 timeStyle: "short",
                             })}</p>
@@ -143,6 +144,8 @@ export function ListaUsuarios({ sinal, atualizaData }) {
                 onClose={() => setUsuarioEmEdicao(null)}
                 onSaveSuccess={atualizaData}
             />
+
+
 
 
         </div>

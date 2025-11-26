@@ -8,14 +8,13 @@ export function Header(){
                     GERENCIADOR DE TAREFAS
                 </h1>
                 
-                {/* Estilo aplicado ao link INICIO */}
+
                 <Link 
                     to="/"
                     className='py-2 px-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition duration-300'>
                     INICIO
                 </Link>
                 
-                {/* Estilo aplicado ao link CONSULTAR */}
                 <Link 
                     to="/consultar"
                     className='py-2 px-4 bg-green-600 text-white font-bold rounded-lg hover:bg-green-700 transition duration-300'>

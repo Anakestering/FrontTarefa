@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import React, {useState} from 'react';
 
-export function Form() { // Corrigido para exportação padrão (default)
+export function Form() {
     const [apiMensagem, setApiMensagem] = useState(null);
 
     const { register,
@@ -9,12 +9,12 @@ export function Form() { // Corrigido para exportação padrão (default)
         formState: { errors },
         reset } = useForm({ mode: 'onBlur' });
         
-    // Função para tratar a submissão do formulário
+   
     const onSubmit = async (data) => {
         setApiMensagem(null);
         console.log("Enviando dados para o backend: ", data)
         try{
-            // O endpoint deve ser ajustado para a sua API local
+           
             const response = await fetch('http://localhost:8080/api/cadastro/usuario', { 
                 method: 'POST',
                 headers: {
@@ -44,7 +44,7 @@ export function Form() { // Corrigido para exportação padrão (default)
         <div className="flex justify-center p-4 sm:p-8 min-h-screen bg-gray-50">
             <div className="w-full max-w-lg bg-white p-6 sm:p-8 rounded-xl shadow-xl"> 
                 
-                <h1 className='text-4xl font-extrabold text-blue-800 mb-8 text-center border-b pb-4'>
+                <h1 className='text-3xl font-bold text-gray-800 mb-6 border-b pb-3'>
                     Cadastro de Tarefa
                 </h1>
                 
@@ -62,7 +62,7 @@ export function Form() { // Corrigido para exportação padrão (default)
                         {errors.titulo && <p className='text-red-500 text-sm mt-1'>{errors.titulo.message}</p>}
                     </div>
                     
-                    {/* DESCRIÇÃO */}
+                   
                     <div>
                         <label htmlFor='descricao' className='block text-sm font-medium text-gray-700 mb-1'>Descrição</label>
                         <textarea
@@ -74,20 +74,20 @@ export function Form() { // Corrigido para exportação padrão (default)
                         {errors.descricao && <p className='text-red-500 text-sm mt-1'>{errors.descricao.message}</p>}
                     </div>
 
-                    {/* DATA VENCIMENTO */}
+                    
                     <div>
                         <label htmlFor='dataVencimento' className='block text-sm font-medium text-gray-700 mb-1'>Data Vencimento</label>
                         <input 
                             id='dataVencimento'
                             type='datetime-local'
-                            // Adicionada a regra de obrigatoriedade (required)
+                            
                             {...register("dataVencimento", { required: "A data de vencimento é obrigatória" })} 
                             className="w-full border-b-2 border-gray-300 rounded-md p-3 focus:outline-none focus:border-blue-600 transition duration-150" // Input com foco na borda inferior
                         />
                          {errors.dataVencimento && <p className='text-red-500 text-sm mt-1'>{errors.dataVencimento.message}</p>}
                     </div>
                     
-                    {/* PRIORIDADE */}
+                 
                     <div>
                         <label htmlFor='prioridade' className='block text-sm font-medium text-gray-700 mb-1'>Prioridade</label>
                         <select
@@ -106,17 +106,17 @@ export function Form() { // Corrigido para exportação padrão (default)
                         )}
                     </div>
                     
-                    {/* BOTÃO DE ENVIO */}
+                    
                     <div className='flex justify-center pt-5'>
                         <button 
-                            className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition duration-300 transform hover:scale-[1.01]" // Botão com efeito de "hover" e largura total
+                            className="w-full py-3 bg-blue-600 text-black font-semibold rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition duration-300 transform hover:scale-[1.01]" // Botão com efeito de "hover" e largura total
                             type='submit'>
                             CADASTRAR TAREFA
                         </button>
                     </div>
                 </form>
             
-                {/* MENSAGENS DE FEEDBACK */}
+               
                 {apiMensagem && (
                     <div className={`mt-6 p-4 rounded-lg text-center font-medium shadow-md ${apiMensagem.type === 'success' ? 'bg-green-600 text-white' : 'bg-red-600 text-white'}`}>
                         {apiMensagem.text}
