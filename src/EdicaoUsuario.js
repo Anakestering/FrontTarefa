@@ -16,7 +16,9 @@ export function EdicaoUsuario({ usuario, onClose, onSaveSuccess }) {
             setFormData({
                 titulo: usuario.titulo,
                 descricao: usuario.descricao,
-                dataVencimento: usuario.dataVencimento,
+                dataVencimento: usuario.dataVencimento
+                    ? usuario.dataVencimento.slice(0, 16)
+                    : "",
                 prioridade: usuario.prioridade
             })
         }
@@ -100,7 +102,7 @@ export function EdicaoUsuario({ usuario, onClose, onSaveSuccess }) {
                     <div>
                         <label htmlFor='dataVencimento' className='block text-sm font-medium text-gray-700'></label>
                         <input
-                            type='text'
+                            type='datetime-local'
                             name='dataVencimento'
                             id='dataVencimento'
                             value={formData.dataVencimento}
@@ -111,17 +113,22 @@ export function EdicaoUsuario({ usuario, onClose, onSaveSuccess }) {
                     </div>
 
                     <div>
-                        <label htmlFor='prioridade' className='block text-sm font-medium text-gray-700'></label>
-                        <input
-                            type='text'
+                        <label htmlFor='prioridade' className='block text-sm font-medium text-gray-700'>Prioridade</label>
+                        <select
                             name='prioridade'
                             id='prioridade'
                             value={formData.prioridade}
                             onChange={handleChange}
                             className='w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent'
                             required
-                        />
+                        >
+                            <option value="">Selecione...</option>
+                            <option value="Alta">Alta</option>
+                            <option value="Média">Média</option>
+                            <option value="Baixa">Baixa</option>
+                        </select>
                     </div>
+
 
 
                     <div className='flex justify-end gap-4 mt-6'>
