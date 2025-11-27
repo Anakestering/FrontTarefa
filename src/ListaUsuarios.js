@@ -11,13 +11,10 @@ export function ListaUsuarios({ sinal, atualizaData }) {
     const getPriorityColor = (prioridade) => {
         switch (prioridade) {
             case 'Alta':
-                // Cor de texto forte (text-red-800) e fundo suave (bg-red-200)
                 return 'bg-red-200 text-red-800';
             case 'Média':
-                // Cor de texto forte e fundo suave de Amarelo/Âmbar
                 return 'bg-yellow-200 text-yellow-800';
             case 'Baixa':
-                // Cor de texto forte e fundo suave de Verde
                 return 'bg-green-200 text-green-800';
             default:
                 return 'bg-gray-200 text-gray-800';
@@ -90,13 +87,13 @@ export function ListaUsuarios({ sinal, atualizaData }) {
                 {usuarios.map(usuario => (
 
                     <li key={usuario.id}
-                        className='relative flex flex-col p-4 bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition duration-200'>
+                        className='relative flex flex-col p-6 bg-white rounded-xl shadow-md border border-gray-100 hover:shadow-lg transition duration-200'>
                         <div className='mb-2'>
 
                             <p className='font-mono font-extrabold text-xl text-sky-800 tracking-tight pr-20'>
                                 {usuario.titulo} </p>
 
-                            <div className='w-full max-h-48 overflow-y-auto p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-inner mt-2'>
+                            <div className='w-80 max-h-30 overflow-y-auto p-4 bg-gray-50 border border-gray-200 rounded-lg shadow-inner mt-2'>
                                 <p className='text-sm text-gray-700'>
                                     {usuario.descricao} </p>
                             </div>
@@ -121,6 +118,8 @@ export function ListaUsuarios({ sinal, atualizaData }) {
                             })}</p>
                         </div>
 
+                        
+
                         <div className='absolute top-4 right-4 flex space-x-2'>
                             <button
                                 onClick={() => setUsuarioEmEdicao(usuario)}
@@ -133,21 +132,18 @@ export function ListaUsuarios({ sinal, atualizaData }) {
                                 Excluir
                             </button>
                         </div>
+                        
                     </li>
+                    
                 ))}
+
             </ul>
-
-
 
             <EdicaoUsuario
                 usuario={usuarioEmEdicao}
                 onClose={() => setUsuarioEmEdicao(null)}
                 onSaveSuccess={atualizaData}
             />
-
-
-
-
         </div>
     )
 

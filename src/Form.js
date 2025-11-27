@@ -38,6 +38,8 @@ export function Form() {
 
         }
     }
+
+
     
     return (
         
@@ -55,9 +57,8 @@ export function Form() {
                         <label htmlFor='titulo' className='block text-sm font-medium text-gray-700 mb-1'>Título</label>
                         <input
                             id='titulo'
-                            placeholder='Ex: Estudar Spring Boot para o projeto'
                             {...register("titulo", { required: "O título é obrigatório" })}
-                            className="w-full border-b-2 border-gray-300 rounded-md p-3 focus:outline-none focus:border-blue-600 transition duration-150" // Input com foco na borda inferior
+                            className="w-full border-b-2 border-gray-300 rounded-md p-3 focus:outline-none focus:border-blue-600 transition duration-150" 
                         />
                         {errors.titulo && <p className='text-red-500 text-sm mt-1'>{errors.titulo.message}</p>}
                     </div>
@@ -67,9 +68,8 @@ export function Form() {
                         <label htmlFor='descricao' className='block text-sm font-medium text-gray-700 mb-1'>Descrição</label>
                         <textarea
                             id='descricao'
-                            placeholder='Detalhes da tarefa e recursos necessários...'
                             {...register("descricao", { required: "A descrição é obrigatória" })}
-                            className="w-full border-b-2 border-gray-300 rounded-md p-3 h-28 resize-none focus:outline-none focus:border-blue-600 transition duration-150" // Input com foco na borda inferior
+                            className="w-full border-b-2 border-gray-300 rounded-md p-3 h-28 resize-none focus:outline-none focus:border-blue-600 transition duration-150" 
                         ></textarea>
                         {errors.descricao && <p className='text-red-500 text-sm mt-1'>{errors.descricao.message}</p>}
                     </div>
@@ -82,7 +82,7 @@ export function Form() {
                             type='datetime-local'
                             
                             {...register("dataVencimento", { required: "A data de vencimento é obrigatória" })} 
-                            className="w-full border-b-2 border-gray-300 rounded-md p-3 focus:outline-none focus:border-blue-600 transition duration-150" // Input com foco na borda inferior
+                            className="w-full border-b-2 border-gray-300 rounded-md p-3 focus:outline-none focus:border-blue-600 transition duration-150"
                         />
                          {errors.dataVencimento && <p className='text-red-500 text-sm mt-1'>{errors.dataVencimento.message}</p>}
                     </div>
@@ -93,9 +93,9 @@ export function Form() {
                         <select
                             id='prioridade'
                             {...register("prioridade", { required: "A prioridade é obrigatória" })}
-                            className="w-full border-b-2 border-gray-300 rounded-md p-3 focus:outline-none focus:border-blue-600 transition duration-150 appearance-none bg-white" // appearance-none para customizar o select
+                            className="w-full border-b-2 border-gray-300 rounded-md p-3 focus:outline-none focus:border-blue-600 transition duration-150 appearance-none bg-white" 
                         >
-                            <option value="">Selecione a prioridade...</option>
+                            <option value="">Selecione a prioridade</option>
                             <option value="Alta">Alta</option>
                             <option value="Média">Média</option>
                             <option value="Baixa">Baixa</option>
@@ -109,7 +109,7 @@ export function Form() {
                     
                     <div className='flex justify-center pt-5'>
                         <button 
-                            className="w-full py-3 bg-blue-600 text-black font-semibold rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition duration-300 transform hover:scale-[1.01]" // Botão com efeito de "hover" e largura total
+                            className="w-full py-3 bg-blue-600 text-black font-semibold rounded-lg shadow-md hover:bg-blue-700 hover:shadow-lg transition duration-300 transform hover:scale-[1.01]" 
                             type='submit'>
                             CADASTRAR TAREFA
                         </button>
@@ -122,7 +122,8 @@ export function Form() {
                         {apiMensagem.text}
                     </div>
                 )}
-            </div>    
+            </div>
+            
         </div>
     )
 }

@@ -69,7 +69,7 @@ export function EdicaoUsuario({ usuario, onClose, onSaveSuccess }) {
     return (
         <div className='fixed inset-0 bg-black/60 backdrop-blur-[4px] flex justify-center items-center  z-50'>
             <div className='bg-white p-6 border border-black/20 rounded-lg shadow-[0_10px_25px_rgba(0,0,0,0.45)] w-full max-w-md'>
-                <h2 className='text-2xl font-bold mb-4'>Editar usuário</h2>
+                <h2 className='text-2xl font-bold mb-4'>Editar Tarefa</h2>
                 <form onSubmit={handleSubmit} className='space-y-4'>
                     <div>
                         <label htmlFor='titulo' className='block text-sm font-medium text-gray-700'></label>
